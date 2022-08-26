@@ -12,28 +12,24 @@ export default function App() {
   {id: "5", name: "Masterball"}, 
  ]
  
- const[addItem , setAddItem]= useState(ShoppingList);
+ const[newShoppingList , setNewShoppingList]= useState(ShoppingList);
 
- function addNewItem(newItem){
-setAddItem([newItem, ...ShoppingList])
+ function addItem(addNewItem){
+  setNewShoppingList([addNewItem, ...newShoppingList])
  }
-
-
-
-  
 
   return (
   
   <div className="App">
    <h1>Pokemon Shopping-List</h1>
-  <AddForm addNewItem={addItem.length} onAddNewItem={addNewItem}/>
+  <AddForm newShoppingList={newShoppingList.length} onAddNewItem={addItem}/>
 
    <ul>
-    {ShoppingList.map((item) => (
+    {newShoppingList.map((ShoppingList) => (
      <ShoppingListItem
-     key={item.id}
-     id={item.id} 
-     name={item.name}/>
+     key={ShoppingList.id}
+     id={ShoppingList.id} 
+     name={ShoppingList.name}/>
     ))}
 
    </ul>
