@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import './App.css';
+import AddForm from './components/AddForm';
 import ShoppingListItem from './components/ShoppingListItem';
 
 export default function App() {
@@ -9,12 +11,22 @@ export default function App() {
   {id: "4", name: "Superball"},
   {id: "5", name: "Masterball"}, 
  ]
- console.log(ShoppingList); 
  
+ const[addItem , setAddItem]= useState(ShoppingList);
+
+ function addNewItem(newItem){
+setAddItem([newItem, ...ShoppingList])
+ }
+
+
+
+  
+
   return (
   
   <div className="App">
    <h1>Pokemon Shopping-List</h1>
+  <AddForm addNewItem={addItem.length} onAddNewItem={addNewItem}/>
 
    <ul>
     {ShoppingList.map((item) => (
@@ -24,9 +36,9 @@ export default function App() {
      name={item.name}/>
     ))}
 
-   <li><input  type="checkbox"/>{}</li> 
-
    </ul>
+
+
 
     </div>
   );
