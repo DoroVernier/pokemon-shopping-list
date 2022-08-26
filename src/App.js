@@ -18,6 +18,15 @@ export default function App() {
   setNewShoppingList([addNewItem, ...newShoppingList])
  }
 
+ function removeItem(id) {
+setNewShoppingList(newShoppingList.filter((ShoppingListItem) => ShoppingListItem.id !== id)); 
+ }
+console.log(removeItem);
+//  function removeTodo(id) {
+//   setTodoList( todoList.filter( (TodoItem) => TodoItem.id !== id) );
+// }
+
+
   return (
   
   <div className="App">
@@ -29,7 +38,10 @@ export default function App() {
      <ShoppingListItem
      key={ShoppingList.id}
      id={ShoppingList.id} 
-     name={ShoppingList.name}/>
+     name={ShoppingList.name} 
+     onRemoveItem={removeItem}
+     />
+     
     ))}
 
    </ul>
