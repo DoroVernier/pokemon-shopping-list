@@ -13,6 +13,13 @@ export default function App() {
  ]
  
  const[newShoppingList , setNewShoppingList]= useState(ShoppingList);
+ const[isDone, setIsDone] = useState(false);
+
+ function StrikeThroughItem ({onChangeItem }){
+    
+  setIsDone(isDone.filter((input) => ShoppingListItem.id = onChangeItem ? input.className.striked : false ));
+}
+
 
  function addItem(addNewItem){
   setNewShoppingList([addNewItem, ...newShoppingList])
@@ -40,6 +47,7 @@ console.log(removeItem);
      id={ShoppingList.id} 
      name={ShoppingList.name} 
      onRemoveItem={removeItem}
+     onChangeItem={StrikeThroughItem}
      />
      
     ))}
