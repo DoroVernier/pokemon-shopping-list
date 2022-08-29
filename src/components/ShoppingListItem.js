@@ -14,7 +14,7 @@ export default function ShoppingListItem({name, id, onRemoveItem}) {
                 <input onChange={handleChange} type="checkbox"/>
                 {name}
             </label>
-            <button className="removeButton" onClick={() => onRemoveItem(id)}>X</button>
+            <button onClick={() => onRemoveItem(id)}>Delete Item</button>
         </li>
     ); 
 }

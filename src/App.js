@@ -1,19 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import AddForm from './components/AddForm';
 import ShoppingListItem from './components/ShoppingListItem';
 
 export default function App() {
  const ShoppingList = [
-  {id: "1", name: "Potion"},
-  {id: "2", name: "Pokeball"},
-  {id: "3", name: "Para Healer"},
-  {id: "4", name: "Superball"},
-  {id: "5", name: "Masterball"}, 
- ]
+  {id: "1", name: "Potion", isDone:false},
+  {id: "2", name: "Pokeball", isDone:false},
+  {id: "3", name: "Para Healer", isDone:false},
+  {id: "4", name: "Superball", isDone:false},
+  {id: "5", name: "Masterball", isDone:false}, 
+ ];
  
- const[newShoppingList , setNewShoppingList]= useState(ShoppingList);
+ const[newShoppingList , setNewShoppingList]= useState(loadFromLocal() || ShoppingList);
  const[isDone, setIsDone] = useState(false);
+
+ useEffect(() => {
+  localStorage.setItem('_ShoppingList', JSON.stringify(newShoppingList)); 
+
+ }, [newShoppingList]); 
+
+ function loadFromLocal() {
+  try {
+    return JSON.parse(localStorage.getItem('_ShoppingList')); 
+  } catch (error) {
+    console.error(error);
+    return false; 
+  }
+ }
 
  function StrikeThroughItem ({onChangeItem }){
     
@@ -41,6 +55,7 @@ console.log(removeItem);
    <ul>
     {newShoppingList.map((ShoppingList) => (
      <ShoppingListItem
+     isChecked={ShoppingList.isDone}
      key={ShoppingList.id}
      id={ShoppingList.id} 
      name={ShoppingList.name} 
