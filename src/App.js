@@ -20,6 +20,16 @@ export default function App() {
 
  }, [newShoppingList]); 
 
+function toggleItem(todoId) {
+  const updatedPokemons = newShoppingList.map((item) => {
+    if (item.id === todoId) {
+      item.isDone = !item.isDone; 
+    }
+    return item; 
+  }); 
+  setNewShoppingList(updatedPokemons); 
+}
+
  function loadFromLocal() {
   try {
     return JSON.parse(localStorage.getItem('_ShoppingList')); 
@@ -28,6 +38,7 @@ export default function App() {
     return false; 
   }
  }
+
 
  function StrikeThroughItem ({onChangeItem }){
     
@@ -42,9 +53,6 @@ export default function App() {
  function removeItem(id) {
 setNewShoppingList(newShoppingList.filter((ShoppingListItem) => ShoppingListItem.id !== id)); 
  }
-console.log(removeItem);
-
-
 
   return (
   
@@ -55,12 +63,14 @@ console.log(removeItem);
    <ul>
     {newShoppingList.map((ShoppingList) => (
      <ShoppingListItem
-     isChecked={ShoppingList.isDone}
+     
      key={ShoppingList.id}
      id={ShoppingList.id} 
      name={ShoppingList.name} 
      onRemoveItem={removeItem}
      onChangeItem={StrikeThroughItem}
+     onToggleItem={toggleItem}
+     isChecked={ShoppingList.isDone}
      />
      
     ))}

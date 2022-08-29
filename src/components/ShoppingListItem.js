@@ -1,7 +1,7 @@
 import '../App.css';
 import { useState } from 'react';
 
-export default function ShoppingListItem({name, id, onRemoveItem}) {
+export default function ShoppingListItem({name, id, onRemoveItem, onToggleItem, isChecked}) {
     
     const[isDone, setIsDone] = useState(false);
     const handleChange =   () => {
@@ -11,7 +11,7 @@ export default function ShoppingListItem({name, id, onRemoveItem}) {
     return (
         <li>
             <label className= {isDone ? "striked" : ""} >
-                <input onChange={handleChange} type="checkbox"/>
+                <input onChange={() => onToggleItem(id)} type="checkbox" checked={isChecked}/>
                 {name}
             </label>
             <button onClick={() => onRemoveItem(id)}>Delete Item</button>
