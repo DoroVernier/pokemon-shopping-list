@@ -2,6 +2,21 @@
   text-decoration: line-through;
 }
 
+.App {
+  background-color: aqua;
+}
+.removeButton {
+  
+  background-image: url(./images/3.svg); 
+  height: 10px;
+  width: 10px; 
+}
+h1 {
+  background-color: grey; 
+  color: white; 
+  font-family:'Times New Roman', Times, serif; 
+}
+
 
 /*.App {
   text-align: center;
