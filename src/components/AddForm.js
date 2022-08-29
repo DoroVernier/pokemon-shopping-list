@@ -1,4 +1,6 @@
-export default function AddForm({newShoppingList , onAddNewItem}){
+import {nanoid} from 'nanoid'
+
+export default function AddForm({ onAddNewItem}){
   function handleSubmit(event){
    event.preventDefault();
    
@@ -7,7 +9,7 @@ export default function AddForm({newShoppingList , onAddNewItem}){
 
    console.log(inputValue);
 
-   const addNewItem = {id:newShoppingList + 1, name: inputValue};
+   const addNewItem = {id:nanoid(), name: inputValue};
    
    onAddNewItem(addNewItem);
   console.log(addNewItem);

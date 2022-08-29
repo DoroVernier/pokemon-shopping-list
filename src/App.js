@@ -29,16 +29,14 @@ export default function App() {
 setNewShoppingList(newShoppingList.filter((ShoppingListItem) => ShoppingListItem.id !== id)); 
  }
 console.log(removeItem);
-//  function removeTodo(id) {
-//   setTodoList( todoList.filter( (TodoItem) => TodoItem.id !== id) );
-// }
+
 
 
   return (
   
   <div className="App">
    <h1>Pokemon Shopping-List</h1>
-  <AddForm newShoppingList={newShoppingList.length} onAddNewItem={addItem}/>
+  <AddForm  onAddNewItem={addItem}/>
 
    <ul>
     {newShoppingList.map((ShoppingList) => (
