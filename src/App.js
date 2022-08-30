@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import AddForm from './components/AddForm';
 import ShoppingListItem from './components/ShoppingListItem';
+import { nanoid } from 'nanoid';
+
+const apiURL = "https://pokeapi.co/api/v2/item/"; 
+
 
 export default function App() {
  const ShoppingList = [
@@ -38,21 +42,24 @@ function toggleItem(todoId) {
     return false; 
   }
  }
-
-
- function StrikeThroughItem ({onChangeItem }){
-    
+ function StrikeThroughItem ({onChangeItem }){  
   setIsDone(isDone.filter((input) => ShoppingListItem.id = onChangeItem ? input.className.striked : false ));
 }
-
-
  function addItem(addNewItem){
   setNewShoppingList([addNewItem, ...newShoppingList])
  }
-
  function removeItem(id) {
 setNewShoppingList(newShoppingList.filter((ShoppingListItem) => ShoppingListItem.id !== id)); 
  }
+const[pokeItems, setPokeItems] = useState([]); 
+useEffect(() => {
+  fetch(apiURL)
+  .then((response) => response.json())
+  .then((data) => setPokeItems(data.results))
+  .catch((error) => console.error(error));
+},[]);
+console.log(pokeItems); 
+
 
   return (
   
@@ -72,7 +79,19 @@ setNewShoppingList(newShoppingList.filter((ShoppingListItem) => ShoppingListItem
      onToggleItem={toggleItem}
      isChecked={ShoppingList.isDone}
      />
-     
+    ))}
+
+    {pokeItems.map((pokeItem) => (
+      <ShoppingListItem
+        key={pokeItem.name}
+        name={pokeItem.name}
+        pokeItemInfo={pokeItem.url}
+        id={nanoid()}
+        onRemoveItem={removeItem}
+        onChangeItem={StrikeThroughItem}
+        onToggleItem={toggleItem}
+        isChecked={pokeItem.isDone}
+  />
     ))}
 
    </ul>
