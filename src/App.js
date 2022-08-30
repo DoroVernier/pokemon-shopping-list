@@ -5,11 +5,11 @@ import ShoppingListItem from './components/ShoppingListItem';
 
 export default function App() {
  const ShoppingList = [
-  {id: "1", name: "Potion", isDone:false},
-  {id: "2", name: "Pokeball", isDone:false},
-  {id: "3", name: "Para Healer", isDone:false},
-  {id: "4", name: "Superball", isDone:false},
-  {id: "5", name: "Masterball", isDone:false}, 
+  {id: "1", name: "Potion", isDone: false},
+  {id: "2", name: "Pokeball", isDone: false},
+  {id: "3", name: "Para Healer", isDone: false},
+  {id: "4", name: "Superball", isDone: false},
+  {id: "5", name: "Masterball", isDone: false}, 
  ];
  
  const[newShoppingList , setNewShoppingList]= useState(loadFromLocal() || ShoppingList);

@@ -3,14 +3,11 @@ import { useState } from 'react';
 
 export default function ShoppingListItem({name, id, onRemoveItem, onToggleItem, isChecked}) {
     
-    const[isDone, setIsDone] = useState(false);
-    const handleChange =   () => {
-        setIsDone(!isDone);
-    }
+ 
  
     return (
         <li>
-            <label className= {isDone ? "striked" : ""} >
+            <label className= {isChecked ? "striked" : ""} >
                 <input onChange={() => onToggleItem(id)} type="checkbox" checked={isChecked}/>
                 {name}
             </label>
