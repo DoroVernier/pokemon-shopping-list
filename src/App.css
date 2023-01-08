@@ -3,20 +3,18 @@
 }
 
 .App {
-  background-color: aqua;
+  background-color: lightgoldenrodyellow;
 }
 .removeButton {
-  
-  background-image: url(./images/3.svg); 
+  background-image: url(./images/3.svg);
   height: 10px;
-  width: 10px; 
+  width: 10px;
 }
 h1 {
-  background-color: grey; 
-  color: white; 
-  font-family:'Times New Roman', Times, serif; 
+  background-color: grey;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
 }
-
 
 /*.App {
   text-align: center;
